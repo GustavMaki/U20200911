@@ -19,6 +19,38 @@ namespace U20200911
             foreach (Car item in CarStock) {
                 Console.WriteLine($"{item.Brand} {item.Model} ({item.RegNumber}) | År: {item.Year} | Miltal: {item.Mile} | Skick: {item.Condition}/10");
             }
+
+            
+            Console.Write("Hur många bilar vill du lägga till?:");
+            string Number = Console.ReadLine();
+            int CarAdd = int.Parse(Number);
+            int i = 0;
+
+            for (i = 0; i < CarAdd; i++) {
+                Console.WriteLine($"Bil ({i+1})");
+
+                Console.Write("Märke: ");
+                string Brand = Console.ReadLine();
+
+                Console.Write("Modell: ");
+                string Model = Console.ReadLine();
+
+                Console.Write("Reg Nummer: ");
+                string RegNumber = Console.ReadLine();
+
+                Console.Write("Miltal: ");
+                string Mile = Console.ReadLine();
+
+                Console.Write("Skick(1-10): ");
+                string Condition = Console.ReadLine();
+
+                Console.Write("År: ");
+                string Year = Console.ReadLine();
+
+                CarStock.Add(new Car { Brand = Brand , Model = Model, Mile = Mile, Condition = Condition, Year = Year, RegNumber = RegNumber });
+            }
+
+
         }
     }
 
