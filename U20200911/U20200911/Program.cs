@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace U20200911
 {
@@ -15,19 +16,22 @@ namespace U20200911
             CarStock.Add(new Car { Brand = "Corvette", Model = "Stringray", Mile = "6000", Condition = "8", Year = "2014", RegNumber = "JMS666" });
             CarStock.Add(new Car { Brand = "SAAB", Model = "9-5 Kombi", Mile = "30000", Condition = "4", Year = "2004", RegNumber = "UMS930" });
 
-            Console.WriteLine("Bilar i Lager: ");
+            Console.WriteLine("Lagerlista: ");
             foreach (Car item in CarStock) {
                 Console.WriteLine($"{item.Brand} {item.Model} ({item.RegNumber}) | År: {item.Year} | Miltal: {item.Mile} | Skick: {item.Condition}/10");
             }
 
-            
+            Console.WriteLine();
+
             Console.Write("Hur många bilar vill du lägga till?:");
             string Number = Console.ReadLine();
             int CarAdd = int.Parse(Number);
             int i = 0;
 
+            Console.WriteLine();
+
             for (i = 0; i < CarAdd; i++) {
-                Console.WriteLine($"Bil ({i+1})");
+                Console.WriteLine($"Bil({i+1})");
 
                 Console.Write("Märke: ");
                 string Brand = Console.ReadLine();
@@ -48,9 +52,29 @@ namespace U20200911
                 string Year = Console.ReadLine();
 
                 CarStock.Add(new Car { Brand = Brand , Model = Model, Mile = Mile, Condition = Condition, Year = Year, RegNumber = RegNumber });
+
+                Console.WriteLine();
             }
 
+            Console.WriteLine("Uppdaterad Lagerlista: ");
+            Console.WriteLine($" Antal Bilar: {CarStock.Count()}");
+            Console.WriteLine();
 
+            foreach (Car item in CarStock)
+            {
+                Console.WriteLine($"{item.Brand} {item.Model} ({item.RegNumber}) | År: {item.Year} | Miltal: {item.Mile} | Skick: {item.Condition}/10");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("Sök i Listan");
+            Console.Write("Bilmärke: ");
+            string SearchBrand = Console.ReadLine();
+
+            foreach (Car item in CarStock.FindAll(x => x.Brand == SearchBrand))
+            {
+                Console.WriteLine($"{item.Brand} {item.Model} ({item.RegNumber}) | År: {item.Year} | Miltal: {item.Mile} | Skick: {item.Condition}/10");
+            }
         }
     }
 
